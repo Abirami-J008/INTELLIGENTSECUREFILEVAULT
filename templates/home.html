@@ -1,0 +1,1610 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Intelligent Secure Vault</title>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<link rel="stylesheet"
+href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
+
+font-family:'Segoe UI',sans-serif;
+
+background:
+linear-gradient(
+135deg,
+#020617,
+#0f172a,
+#1e293b,
+#2563eb
+);
+
+color:white;
+
+overflow-x:hidden;
+}
+
+/* NAVBAR */
+
+.navbar{
+
+background:rgba(255,255,255,.05);
+
+backdrop-filter:blur(15px);
+
+border-bottom:
+1px solid rgba(255,255,255,.1);
+
+}
+
+.navbar-brand{
+
+font-weight:800;
+
+font-size:26px;
+
+color:#fff !important;
+}
+
+/* HERO */
+
+.hero{
+
+min-height:90vh;
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+text-align:center;
+
+padding:40px;
+
+position:relative;
+}
+
+.hero::before{
+
+content:"";
+
+position:absolute;
+
+width:450px;
+height:450px;
+
+background:#2563eb;
+
+border-radius:50%;
+
+filter:blur(180px);
+
+top:-150px;
+left:-150px;
+
+opacity:.35;
+}
+
+.hero::after{
+
+content:"";
+
+position:absolute;
+
+width:450px;
+height:450px;
+
+background:#06b6d4;
+
+border-radius:50%;
+
+filter:blur(180px);
+
+bottom:-150px;
+right:-150px;
+
+opacity:.25;
+}
+
+.hero-content{
+
+position:relative;
+
+z-index:2;
+
+max-width:900px;
+}
+
+.hero-icon{
+
+font-size:90px;
+
+color:#60a5fa;
+
+margin-bottom:20px;
+}
+
+.hero h1{
+
+font-size:60px;
+
+font-weight:900;
+
+margin-bottom:20px;
+}
+
+.hero p{
+
+font-size:20px;
+
+opacity:.85;
+
+line-height:1.8;
+}
+
+.hero-buttons{
+
+margin-top:35px;
+}
+
+.btn-custom{
+
+padding:14px 35px;
+
+font-size:18px;
+
+font-weight:700;
+
+border-radius:14px;
+
+margin:10px;
+}
+
+.btn-user{
+
+background:#22c55e;
+
+border:none;
+}
+
+.btn-register{
+
+background:#f59e0b;
+
+border:none;
+}
+
+/* SECTION TITLE */
+
+.section-title{
+
+text-align:center;
+
+margin-top:80px;
+
+margin-bottom:50px;
+}
+
+.section-title h2{
+
+font-size:42px;
+
+font-weight:800;
+}
+
+.section-title p{
+
+opacity:.8;
+}
+
+/* CARDS */
+
+.feature-card{
+
+background:rgba(255,255,255,.07);
+
+backdrop-filter:blur(15px);
+
+border:1px solid rgba(255,255,255,.12);
+
+border-radius:22px;
+
+padding:30px;
+
+height:100%;
+
+transition:.3s;
+}
+
+.feature-card:hover{
+
+transform:translateY(-10px);
+
+background:rgba(255,255,255,.1);
+}
+
+.feature-icon{
+
+font-size:55px;
+
+color:#60a5fa;
+
+margin-bottom:15px;
+}
+.feature-icon{
+
+font-size:55px;
+
+margin-bottom:15px;
+
+color:#60a5fa;
+
+}
+
+.feature-card h4{
+
+font-weight:700;
+
+margin-bottom:12px;
+}
+
+.feature-card p{
+
+opacity:.85;
+}
+
+/* SECURITY STRIP */
+
+.security-strip{
+
+margin-top:80px;
+
+padding:30px;
+
+background:rgba(255,255,255,.05);
+
+text-align:center;
+
+border-top:
+1px solid rgba(255,255,255,.1);
+
+border-bottom:
+1px solid rgba(255,255,255,.1);
+}
+
+.security-strip h3{
+
+font-weight:800;
+}
+
+.security-strip span{
+
+color:#60a5fa;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+
+<nav class="navbar navbar-expand-lg">
+
+<div class="container">
+
+<a class="navbar-brand" href="#">
+
+<i class="bi bi-shield-lock-fill"></i>
+
+Secure Vault
+
+</a>
+
+</div>
+
+</nav>
+
+<!-- HERO -->
+
+<section class="hero">
+
+<div class="hero-content">
+
+<div class="hero-icon">
+
+<i class="bi bi-shield-lock-fill"></i>
+
+</div>
+
+<h1>
+
+Intelligent Secure File Vault
+
+</h1>
+
+<p>
+
+Enterprise Level Secure File Storage System
+with Encryption, Role Based Access Control,
+Admin Approval, Activity Monitoring,
+Security Alerts and Session Protection.
+
+</p>
+
+<div class="hero-buttons">
+
+<a href="/login"
+class="btn btn-success btn-custom btn-user">
+
+<i class="bi bi-box-arrow-in-right"></i>
+
+User Login
+
+</a>
+
+<a href="/register"
+class="btn btn-warning btn-custom btn-register">
+
+<i class="bi bi-person-plus-fill"></i>
+
+Register
+
+</a>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- FEATURES -->
+
+<div class="container">
+
+<div class="section-title">
+
+<h2>
+
+🔐 Core Security Features
+
+</h2>
+
+<p>
+
+Designed with enterprise-grade security architecture
+
+</p>
+
+</div>
+
+<div class="row g-4">
+
+<div class="col-md-4">
+
+<div class="feature-card">
+
+<div class="feature-icon">
+
+<i class="bi bi-person-lock"></i>
+
+</div>
+
+<h4>
+
+Role Based Access
+
+</h4>
+
+<p>
+
+Separate Admin and User access.
+Users can only access files belonging
+to their department.
+
+</p>
+
+</div>
+
+</div>
+
+<div class="col-md-4">
+
+<div class="feature-card">
+
+<div class="feature-icon">
+
+<i class="bi bi-key-fill"></i>
+
+</div>
+
+<h4>
+
+Password Encryption
+
+</h4>
+
+<p>
+
+Passwords are securely protected
+using bcrypt hashing before
+being stored in database.
+
+</p>
+
+</div>
+
+</div>
+
+<div class="col-md-4">
+
+<div class="feature-card">
+
+<div class="feature-icon">
+
+<i class="bi bi-file-earmark-lock-fill"></i>
+
+</div>
+
+<h4>
+
+File Encryption
+
+</h4>
+
+<p>
+
+All uploaded files are encrypted
+using Fernet Encryption before
+being stored on server.
+
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- SECURITY STRIP -->
+
+<div class="security-strip">
+
+<h3>
+
+🛡 Military Grade Security •
+<span>Encryption</span> •
+<span>Monitoring</span> •
+<span>Access Control</span>
+
+</h3>
+
+</div>
+<!-- WORKFLOW SECTION -->
+
+<div class="container">
+
+<div class="section-title">
+
+<h2>
+
+⚙️ Intelligent Security Workflow
+
+</h2>
+
+<p>
+
+Every action is protected and monitored
+
+</p>
+
+</div>
+
+<div class="row g-4">
+
+<div class="col-md-3">
+
+<div class="feature-card text-center">
+
+<div class="feature-icon">
+
+<i class="bi bi-person-plus-fill"></i>
+
+</div>
+
+<h4>
+
+1. Registration
+
+</h4>
+
+<p>
+
+User enters Username,
+Email, Password
+and Department.
+
+</p>
+
+</div>
+
+</div>
+
+<div class="col-md-3">
+
+<div class="feature-card text-center">
+
+<div class="feature-icon">
+
+<i class="bi bi-person-check-fill"></i>
+
+</div>
+
+<h4>
+
+2. Admin Approval
+
+</h4>
+
+<p>
+
+Registration request
+appears in Admin Dashboard.
+
+Admin verifies details
+before approval.
+
+</p>
+
+</div>
+
+</div>
+
+<div class="col-md-3">
+
+<div class="feature-card text-center">
+
+<div class="feature-icon">
+
+<i class="bi bi-shield-check"></i>
+
+</div>
+
+<h4>
+
+3. Secure Login
+
+</h4>
+
+<p>
+
+Only approved users
+can access the system.
+
+Department validation
+is enforced.
+
+</p>
+
+</div>
+
+</div>
+
+<div class="col-md-3">
+
+<div class="feature-card text-center">
+
+<div class="feature-icon">
+
+<i class="bi bi-file-lock2-fill"></i>
+
+</div>
+
+<h4>
+
+4. Protected Access
+
+</h4>
+
+<p>
+
+Encrypted files,
+controlled downloads
+and activity tracking.
+
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- ADVANCED SECURITY -->
+
+<div class="container mt-5">
+
+<div class="section-title">
+
+<h2>
+
+🚨 Advanced Security Protection
+
+</h2>
+
+<p>
+
+Real-time protection against unauthorized access
+
+</p>
+
+</div>
+
+<div class="row g-4">
+
+<div class="col-md-4">
+
+<div class="feature-card">
+
+<div class="feature-icon">
+
+<i class="bi bi-exclamation-triangle-fill"></i>
+
+</div>
+
+<h4>
+
+Failed Login Detection
+
+</h4>
+
+<p>
+
+System continuously monitors
+incorrect password attempts
+to identify suspicious activity.
+
+</p>
+
+</div>
+
+</div>
+
+<div class="col-md-4">
+
+<div class="feature-card">
+
+<div class="feature-icon">
+
+<i class="bi bi-lock-fill"></i>
+
+</div>
+
+<h4>
+
+3 Attempt Protection
+
+</h4>
+
+<p>
+
+After three incorrect
+password attempts,
+account protection
+activates automatically.
+
+</p>
+
+</div>
+
+</div>
+
+<div class="col-md-4">
+
+<div class="feature-card">
+
+<div class="feature-icon">
+
+<i class="bi bi-clock-history"></i>
+
+</div>
+
+<h4>
+
+10 Minute Lock
+
+</h4>
+
+<p>
+
+Account becomes temporarily
+locked for 10 minutes
+to prevent brute force attacks.
+
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- ALERTS SECTION -->
+
+<div class="container mt-5">
+
+<div class="section-title">
+
+<h2>
+
+🔔 Security Alerts & Monitoring
+
+</h2>
+
+<p>
+
+Administrator receives security visibility
+
+</p>
+
+</div>
+
+<div class="row g-4">
+
+<div class="col-md-6">
+
+<div class="feature-card">
+
+<div class="feature-icon">
+
+<i class="bi bi-eye-fill"></i>
+
+</div>
+
+<h4>
+
+Admin Monitoring
+
+</h4>
+
+<p>
+
+Administrator can monitor
+all user activities,
+uploads, downloads,
+logins and security events.
+
+</p>
+
+</div>
+
+</div>
+
+<div class="col-md-6">
+
+<div class="feature-card">
+
+<div class="feature-icon">
+
+<i class="bi bi-bell-fill"></i>
+
+</div>
+
+<h4>
+
+Security Alerts
+
+</h4>
+
+<p>
+
+Failed login attempts,
+locked accounts and
+critical security events
+are recorded automatically.
+
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- SESSION SECURITY -->
+
+<div class="container mt-5">
+
+<div class="section-title">
+
+<h2>
+
+⏳ Session Security
+
+</h2>
+
+<p>
+
+Protecting users from unattended access
+
+</p>
+
+</div>
+
+<div class="row g-4">
+
+<div class="col-md-6">
+
+<div class="feature-card">
+
+<div class="feature-icon">
+
+<i class="bi bi-stopwatch-fill"></i>
+
+</div>
+
+<h4>
+
+Automatic Timeout
+
+</h4>
+
+<p>
+
+Inactive users are
+automatically logged out
+after 10 minutes.
+
+</p>
+
+</div>
+
+</div>
+
+<div class="col-md-6">
+
+<div class="feature-card">
+
+<div class="feature-icon">
+
+<i class="bi bi-shield-fill-check"></i>
+
+</div>
+
+<h4>
+
+Session Protection
+
+</h4>
+
+<p>
+
+Prevents unauthorized access
+when users leave their
+system unattended.
+
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+<!-- ACTIVITY LOGS SECTION -->
+
+<div class="container mt-5">
+
+<div class="section-title">
+
+<h2>
+
+📋 Activity Logs & Audit Monitoring
+
+</h2>
+
+<p>
+
+Complete tracking of every user action inside the Secure Vault
+
+</p>
+
+</div>
+
+<div class="row g-4">
+
+<div class="col-md-6">
+
+<div class="feature-card">
+
+<div class="feature-icon">
+
+<i class="bi bi-clipboard-data-fill"></i>
+
+</div>
+
+<h4>
+
+Admin Activity Monitoring
+
+</h4>
+
+<p>
+
+Administrator can view complete system activity logs.
+
+<br><br>
+
+✅ User Login History
+
+<br>
+
+✅ File Upload Activities
+
+<br>
+
+✅ File Download Activities
+
+<br>
+
+✅ Failed Login Attempts
+
+<br>
+
+✅ Security Alerts
+
+<br>
+
+✅ Department Wise Activities
+
+<br>
+
+✅ Recent User Actions
+
+</p>
+
+</div>
+
+</div>
+
+<div class="col-md-6">
+
+<div class="feature-card">
+
+<div class="feature-icon">
+
+<i class="bi bi-person-lines-fill"></i>
+
+</div>
+
+<h4>
+
+User Activity Logs
+
+</h4>
+
+<p>
+
+Users can view only their department related activities.
+
+<br><br>
+
+✅ Department File Activities
+
+<br>
+
+✅ Upload History
+
+<br>
+
+✅ Download History
+
+<br>
+
+✅ Login Records
+
+<br>
+
+❌ Cannot view other departments
+
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- SEARCH & FILTER -->
+
+<div class="container mt-5">
+
+<div class="section-title">
+
+<h2>
+
+🔍 Advanced Search & Filters
+
+</h2>
+
+<p>
+
+Fast and intelligent activity log analysis
+
+</p>
+
+</div>
+
+<div class="row g-4">
+
+<div class="col-md-4">
+
+<div class="feature-card text-center">
+
+<div class="feature-icon">
+
+<i class="bi bi-search"></i>
+
+</div>
+
+<h4>
+
+Search Bar
+
+</h4>
+
+<p>
+
+Search users,
+activities,
+file names,
+departments
+and logs instantly.
+
+</p>
+
+</div>
+
+</div>
+
+<div class="col-md-4">
+
+<div class="feature-card text-center">
+
+<div class="feature-icon">
+
+<i class="bi bi-calendar-date-fill"></i>
+
+</div>
+
+<h4>
+
+From Date
+
+</h4>
+
+<p>
+
+Filter records
+starting from
+a selected date.
+
+</p>
+
+</div>
+
+</div>
+
+<div class="col-md-4">
+
+<div class="feature-card text-center">
+
+<div class="feature-icon">
+
+<i class="bi bi-calendar-check-fill"></i>
+
+</div>
+
+<h4>
+
+To Date
+
+</h4>
+
+<p>
+
+Retrieve logs
+up to a selected
+end date.
+
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- ADMIN DASHBOARD FEATURES -->
+
+<div class="container mt-5">
+
+<div class="section-title">
+
+<h2>
+
+👨‍💻 Administrator Control Center
+
+</h2>
+
+<p>
+
+Centralized monitoring and security management
+
+</p>
+
+</div>
+
+<div class="row g-4">
+
+<div class="col-md-4">
+
+<div class="feature-card">
+
+<div class="feature-icon">
+
+<i class="bi bi-people-fill"></i>
+
+</div>
+
+<h4>
+
+Pending User Approval
+
+</h4>
+
+<p>
+
+Admin can review registration requests.
+
+<br><br>
+
+View:
+
+<br>
+
+• Username
+
+<br>
+
+• Email
+
+<br>
+
+• Department
+
+<br>
+
+Approve user with one click.
+
+</p>
+
+</div>
+
+</div>
+
+<div class="col-md-4">
+
+<div class="feature-card">
+
+<div class="feature-icon">
+
+<i class="bi bi-bar-chart-fill"></i>
+
+</div>
+
+<h4>
+
+Analytics Dashboard
+
+</h4>
+
+<p>
+
+Real-time statistics for:
+
+<br><br>
+
+• Total Users
+
+<br>
+
+• Total Files
+
+<br>
+
+• Upload Count
+
+<br>
+
+• Download Count
+
+<br>
+
+• Login Count
+
+</p>
+
+</div>
+
+</div>
+
+<div class="col-md-4">
+
+<div class="feature-card">
+
+<div class="feature-icon">
+
+<i class="bi bi-exclamation-octagon-fill"></i>
+
+</div>
+
+<h4>
+
+Security Alerts
+
+</h4>
+
+<p>
+
+Automatic alerts generated for:
+
+<br><br>
+
+• Failed Login Attempts
+
+<br>
+
+• Suspicious Activities
+
+<br>
+
+• Locked Accounts
+
+<br>
+
+• Unauthorized Access
+
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- DEPARTMENT SECURITY -->
+
+<div class="container mt-5">
+
+<div class="section-title">
+
+<h2>
+
+🏢 Department Based Security
+
+</h2>
+
+<p>
+
+Strict separation of data between departments
+
+</p>
+
+</div>
+
+<div class="row g-4">
+
+<div class="col-md-4">
+
+<div class="feature-card text-center">
+
+<div class="feature-icon">
+<i class="bi bi-laptop-fill"></i>
+</div>
+
+<h4>CSE</h4>
+
+<p>
+
+Computer Science Department
+
+<br>
+
+Secure access to CSE documents only
+
+</p>
+
+</div>
+
+</div>
+
+<div class="col-md-4">
+
+<div class="feature-card text-center">
+
+<div class="feature-icon">
+<i class="bi bi-hdd-network-fill"></i>
+</div>
+
+<h4>IT</h4>
+
+<p>
+
+Information Technology Department
+
+<br>
+
+Restricted IT file access
+
+</p>
+
+</div>
+
+</div>
+
+<div class="col-md-4">
+
+<div class="feature-card text-center">
+
+<div class="feature-icon">
+<i class="bi bi-cpu-fill"></i>
+</div>
+
+<h4>ECE</h4>
+
+<p>
+
+Electronics & Communication
+
+<br>
+
+Protected ECE resources
+
+</p>
+
+</div>
+
+</div>
+
+<div class="col-md-4">
+
+<div class="feature-card text-center">
+
+<div class="feature-icon">
+<i class="bi bi-lightning-charge-fill"></i>
+</div>
+
+<h4>EEE</h4>
+
+<p>
+
+Electrical & Electronics
+
+<br>
+
+Access only EEE files
+
+</p>
+
+</div>
+
+</div>
+
+<div class="col-md-4">
+
+<div class="feature-card text-center">
+
+<div class="feature-icon">
+<i class="bi bi-gear-wide-connected"></i>
+</div>
+
+<h4>MECH</h4>
+
+<p>
+
+Mechanical Engineering
+
+<br>
+
+Access only Mechanical documents
+
+</p>
+
+</div>
+
+</div>
+
+<div class="col-md-4">
+
+<div class="feature-card text-center">
+
+<div class="feature-icon">
+<i class="bi bi-building-fill-gear"></i>
+</div>
+
+<h4>CIVIL</h4>
+
+<p>
+
+Civil Engineering
+
+<br>
+
+Access only Civil department files
+
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- FINAL SECURITY BANNER -->
+
+<h1 class="mb-3">
+
+<i class="bi bi-shield-shaded text-primary"></i>
+
+Enterprise Security Architecture
+
+</h1>
+
+<p class="text-light">
+
+Multi-Layer Cyber Security Protection Framework
+
+</p>
+<div class="row text-start mt-4">
+
+<div class="col-md-6">
+
+<p>
+<i class="bi bi-person-check-fill text-success"></i>
+Admin Approval System
+</p>
+
+<p>
+<i class="bi bi-shield-lock-fill text-primary"></i>
+Role Based Access Control
+</p>
+
+<p>
+<i class="bi bi-diagram-3-fill text-info"></i>
+Department Isolation
+</p>
+
+<p>
+<i class="bi bi-key-fill text-warning"></i>
+Password Encryption (bcrypt)
+</p>
+
+<p>
+<i class="bi bi-file-earmark-lock-fill text-danger"></i>
+File Encryption (Fernet)
+</p>
+
+<p>
+<i class="bi bi-exclamation-triangle-fill text-warning"></i>
+Failed Login Detection
+</p>
+
+<p>
+<i class="bi bi-lock-fill text-danger"></i>
+3 Attempt Lock Protection
+</p>
+
+</div>
+
+<div class="col-md-6">
+
+<p>
+<i class="bi bi-clock-history text-info"></i>
+10 Minute Account Lock
+</p>
+
+<p>
+<i class="bi bi-stopwatch-fill text-primary"></i>
+Session Timeout Security
+</p>
+
+<p>
+<i class="bi bi-bell-fill text-danger"></i>
+Security Alerts
+</p>
+
+<p>
+<i class="bi bi-activity text-success"></i>
+Activity Log Monitoring
+</p>
+
+<p>
+<i class="bi bi-search text-info"></i>
+Search & Date Filters
+</p>
+
+<p>
+<i class="bi bi-journal-check text-warning"></i>
+Audit Trail System
+</p>
+
+<p>
+<i class="bi bi-shield-check text-success"></i>
+Enterprise Security Compliance
+</p>
+
+</div>
+
+</div>
+<!-- FOOTER -->
+
+<footer class="mt-5 text-center p-4">
+
+<h5>
+
+🚀 Intelligent Secure File Vault
+
+</h5>
+
+<p>
+
+Cyber Security Project using
+
+Flask • SQLite • bcrypt • Fernet Encryption
+
+</p>
+
+<p>
+
+Designed for Secure Enterprise File Management
+
+</p>
+
+</footer>
+
+</body>
+
+</html>

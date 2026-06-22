@@ -1,0 +1,1970 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Security Command Center</title>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:'Segoe UI',sans-serif;
+    background:
+    radial-gradient(circle at top left,#1e3a8a 0%,transparent 35%),
+    radial-gradient(circle at top right,#7c3aed 0%,transparent 35%),
+    #020617;
+    color:#f8fafc;
+    min-height:100vh;
+}
+
+/* ===========================
+   HERO SECTION
+=========================== */
+
+.hero{
+    background:linear-gradient(
+    135deg,
+    #2563eb,
+    #4f46e5,
+    #7c3aed
+    );
+
+    border-radius:24px;
+    padding:35px;
+
+    text-align:center;
+
+    box-shadow:
+    0 15px 40px rgba(37,99,235,.35);
+
+    position:relative;
+    overflow:hidden;
+}
+
+.hero::before{
+    content:'';
+    position:absolute;
+    width:300px;
+    height:300px;
+    background:rgba(255,255,255,.08);
+    border-radius:50%;
+    top:-120px;
+    right:-80px;
+}
+
+.hero h2{
+    font-weight:800;
+    letter-spacing:1px;
+}
+
+.hero p{
+    margin-top:10px;
+}
+.profile-btn{
+    background:linear-gradient(
+        135deg,
+        #0f172a,
+        #1e3a8a
+    );
+    
+    color:white;
+    
+    border:none;
+    
+    border-radius:12px;
+    
+    font-weight:700;
+    
+    padding:10px 18px;
+    
+    transition:.3s;
+    
+    box-shadow:
+    0 0 15px rgba(59,130,246,.35);
+}
+
+.profile-btn:hover{
+
+    color:white;
+
+    transform:translateY(-2px);
+
+    background:linear-gradient(
+        135deg,
+        #1e40af,
+        #2563eb
+    );
+
+    box-shadow:
+    0 0 25px rgba(59,130,246,.6);
+}
+
+.profile-btn i{
+
+    margin-right:6px;
+
+    font-size:16px;
+}
+
+/* ===========================
+   GLASS CARD
+=========================== */
+
+.card-glass{
+
+    background:rgba(255,255,255,.06);
+
+    border:1px solid rgba(255,255,255,.12);
+
+    backdrop-filter:blur(15px);
+
+    border-radius:20px;
+
+    padding:20px;
+
+    box-shadow:
+    0 10px 30px rgba(0,0,0,.25);
+}
+
+/* ===========================
+   KPI CARD
+=========================== */
+
+.kpi{
+    text-align:center;
+
+    background:rgba(255,255,255,.05);
+
+    border:1px solid rgba(255,255,255,.10);
+
+    border-radius:18px;
+
+    padding:22px;
+
+    transition:.3s;
+}
+
+.kpi:hover{
+    transform:translateY(-8px);
+    box-shadow:0 12px 25px rgba(0,0,0,.35);
+}
+
+.kpi-icon{
+    font-size:38px;
+    margin-bottom:10px;
+}
+
+.kpi h4{
+    font-weight:800;
+}
+
+/* ===========================
+   STATUS BOX
+=========================== */
+
+.status-box{
+
+    background:rgba(255,255,255,.05);
+
+    border:1px solid rgba(255,255,255,.10);
+
+    border-radius:18px;
+
+    padding:18px;
+
+    text-align:center;
+
+    transition:.3s;
+}
+
+.status-box:hover{
+    transform:translateY(-5px);
+}
+
+.status-icon{
+    font-size:35px;
+}
+
+/* ===========================
+   PROCESS FLOW
+=========================== */
+
+.flow{
+    display:flex;
+    flex-wrap:wrap;
+    gap:12px;
+}
+
+.step{
+
+    flex:1;
+
+    min-width:150px;
+
+    text-align:center;
+
+    padding:15px;
+
+    border-radius:15px;
+
+    background:rgba(255,255,255,.05);
+
+    border:1px solid rgba(255,255,255,.10);
+
+    transition:.3s;
+}
+
+.step:hover{
+    transform:scale(1.04);
+}
+
+.step-icon{
+    font-size:30px;
+}
+
+/* ===========================
+   ACTION BUTTONS
+=========================== */
+
+.action-btn{
+
+    padding:14px;
+
+    border-radius:14px;
+
+    font-weight:700;
+
+    transition:.3s;
+}
+
+.action-btn:hover{
+    transform:translateY(-4px);
+}
+
+/* ===========================
+   FORM
+=========================== */
+
+.form-control{
+
+    background:rgba(255,255,255,.08);
+
+    border:1px solid rgba(255,255,255,.15);
+
+    color:white;
+}
+
+.form-control:focus{
+
+    background:rgba(255,255,255,.12);
+
+    color:white;
+
+    box-shadow:none;
+
+    border-color:#60a5fa;
+}
+
+.form-control::placeholder{
+    color:#cbd5e1;
+}
+
+/* ===========================
+   ANALYTICS
+=========================== */
+
+.analytics-card{
+
+    background:rgba(255,255,255,.06);
+
+    border:1px solid rgba(255,255,255,.12);
+
+    border-radius:20px;
+
+    padding:20px;
+}
+
+#activityChart{
+    background:white;
+    border-radius:15px;
+    padding:10px;
+}
+
+/* ===========================
+   LIVE FEED
+=========================== */
+
+.feed-box{
+
+    background:rgba(255,255,255,.05);
+
+    border-left:4px solid #2563eb;
+
+    padding:12px;
+
+    border-radius:12px;
+
+    margin-bottom:12px;
+}
+
+.feed-user{
+    font-weight:700;
+    color:#60a5fa;
+}
+
+.feed-time{
+    color:#94a3b8;
+    font-size:12px;
+}
+
+/* ===========================
+   DEPARTMENT CARD
+=========================== */
+
+.dept-card{
+
+    background:rgba(255,255,255,.05);
+
+    border:1px solid rgba(255,255,255,.10);
+
+    border-radius:18px;
+
+    padding:18px;
+
+    text-align:center;
+
+    transition:.3s;
+}
+
+.dept-card:hover{
+    transform:translateY(-6px);
+}
+
+/* ===========================
+   BADGES
+=========================== */
+
+.badge-encrypt{
+    background:#16a34a;
+}
+
+.badge-time{
+    background:#f59e0b;
+    color:black;
+}
+
+.badge-lock{
+    background:#dc2626;
+}
+
+/* ===========================
+   FOOTER
+=========================== */
+
+.footer{
+    text-align:center;
+    margin-top:25px;
+    color:#94a3b8;
+}
+
+.small-text{
+    color:#cbd5e1;
+}
+/* Department Card */
+
+.dept-card{
+    background:rgba(255,255,255,0.05);
+    border:1px solid rgba(255,255,255,0.1);
+    border-radius:15px;
+    padding:15px;
+    height:100%;
+}
+
+.dept-header{
+    font-size:18px;
+}
+
+.dept-info{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+/* Features */
+
+.feature-box{
+    text-align:center;
+    padding:20px;
+    border-radius:15px;
+    background:rgba(255,255,255,0.05);
+    border:1px solid rgba(255,255,255,0.08);
+    transition:.3s;
+}
+
+.feature-box:hover{
+    transform:translateY(-5px);
+}
+
+/* Analytics Card */
+
+.analytics-card{
+    background:rgba(255,255,255,0.06);
+    border:1px solid rgba(255,255,255,0.1);
+    border-radius:18px;
+    padding:20px;
+}
+
+/* Activity Feed */
+
+.feed-box{
+    background:rgba(255,255,255,0.05);
+    border-left:4px solid #2563eb;
+    padding:15px;
+    margin-bottom:12px;
+    border-radius:12px;
+}
+
+.feed-user{
+    font-weight:bold;
+    font-size:16px;
+}
+
+.feed-time{
+    color:#94a3b8;
+    font-size:13px;
+}
+/* =========================
+   CYBER SECURITY MONITOR
+========================= */
+
+.security-box{
+
+    background:
+    rgba(15,23,42,0.85);
+
+    border-radius:20px;
+
+    padding:20px;
+
+    margin-top:25px;
+
+    border:
+    1px solid rgba(255,255,255,0.15);
+
+    backdrop-filter:blur(15px);
+
+    box-shadow:
+    0 0 30px rgba(220,38,38,0.25);
+
+}
+
+
+
+.security-header{
+
+
+    display:flex;
+
+    align-items:center;
+
+    gap:15px;
+
+
+    background:
+    linear-gradient(
+    135deg,
+    #ef4444,
+    #7f1d1d
+    );
+
+
+    color:white;
+
+    padding:20px;
+
+    border-radius:15px;
+
+
+    box-shadow:
+    0 0 20px
+    rgba(239,68,68,.5);
+
+}
+
+
+
+.security-icon{
+
+    font-size:45px;
+
+    filter:
+    drop-shadow(
+    0 0 10px red
+    );
+
+}
+
+
+
+.security-header h3{
+
+    margin:0;
+
+    font-weight:900;
+
+    letter-spacing:1px;
+
+}
+
+
+
+.security-body{
+
+    margin-top:20px;
+
+}
+
+
+
+.alert-card{
+
+
+    display:flex;
+
+    gap:15px;
+
+
+    background:
+
+    linear-gradient(
+    135deg,
+    rgba(127,29,29,.8),
+    rgba(30,41,59,.9)
+    );
+
+
+    border-left:
+
+    6px solid #ef4444;
+
+
+    padding:18px;
+
+    margin-top:15px;
+
+
+    border-radius:15px;
+
+
+    color:white;
+
+
+    box-shadow:
+
+    0 0 20px
+    rgba(239,68,68,.25);
+
+
+}
+
+
+
+.alert-card:hover{
+
+
+    transform:translateY(-3px);
+
+
+    box-shadow:
+
+    0 0 30px
+    rgba(239,68,68,.6);
+
+
+    transition:.3s;
+
+
+}
+
+
+
+.alert-icon{
+
+
+    font-size:40px;
+
+
+}
+
+
+
+.alert-content h5{
+
+
+    color:#fca5a5;
+
+    font-weight:800;
+
+
+}
+
+
+
+.alert-content p{
+
+
+    margin:6px 0;
+
+
+    color:#e5e7eb;
+
+
+}
+
+
+
+.safe-box{
+
+
+    background:
+
+    linear-gradient(
+    135deg,
+    #064e3b,
+    #022c22
+    );
+
+
+    color:#6ee7b7;
+
+
+    padding:20px;
+
+
+    text-align:center;
+
+
+    border-radius:15px;
+
+
+    font-weight:800;
+
+
+    border:
+
+    1px solid #10b981;
+
+
+    box-shadow:
+
+    0 0 20px
+    rgba(16,185,129,.3);
+
+
+}
+
+
+
+.danger-title{
+
+
+    color:#f87171;
+
+
+    font-weight:900;
+
+
+}
+
+/* Footer */
+
+.footer{
+    text-align:center;
+    color:#94a3b8;
+    padding-bottom:20px;
+}
+</style>
+
+</head>
+<body>
+
+<div class="container py-4">
+
+<!-- =====================================
+     HERO SECTION
+===================================== -->
+
+<div class="hero mb-4">
+
+    <div class="row align-items-center">
+
+        <div class="col-md-8 text-md-start text-center">
+
+            <h2>
+                <i class="bi bi-shield-lock-fill"></i>
+                Security Command Center
+            </h2>
+
+            <p class="small-text mb-2">
+                Enterprise Secure File Vault • Audit Monitoring • Role Based Access Control
+            </p>
+
+            <h5>
+                <i class="bi bi-person-badge-fill"></i>
+                Welcome Admin :
+                <b>{{ username }}</b>
+            </h5>
+            <a href="/profile" class="profile-btn me-2">
+            <i class="bi bi-person-badge-fill"></i>
+                Profile
+            </a>
+        </div>
+
+        <div class="col-md-4 text-center">
+
+            <i class="bi bi-fingerprint"
+               style="font-size:80px;color:white;">
+            </i>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- =====================================
+     SECURITY STATUS CARDS
+===================================== -->
+
+<div class="row g-3">
+
+    <!-- Encryption -->
+
+    <div class="col-md-4">
+
+        <div class="status-box">
+
+            <div class="status-icon">
+                🔐
+            </div>
+
+            <h5 class="mt-2">
+                Encryption Status
+            </h5>
+
+            <span class="badge badge-encrypt px-3 py-2">
+                ACTIVE
+            </span>
+
+            <p class="small-text mt-2 mb-0">
+                Secure file encryption enabled
+            </p>
+
+        </div>
+
+    </div>
+
+    <!-- Login Attempts -->
+
+    <div class="col-md-4">
+
+        <div class="status-box">
+
+            <div class="status-icon">
+                🚨
+            </div>
+
+            <h5 class="mt-2">
+                Login Attempts
+            </h5>
+
+            <span class="badge badge-lock px-3 py-2">
+                3 TRIES
+            </span>
+
+            <p class="small-text mt-2 mb-0">
+                Account lock after failed attempts
+            </p>
+
+        </div>
+
+    </div>
+
+    <!-- Timeout -->
+
+    <div class="col-md-4">
+
+        <div class="status-box">
+
+            <div class="status-icon">
+                ⏳
+            </div>
+
+            <h5 class="mt-2">
+                Session Timeout
+            </h5>
+
+            <span class="badge badge-time px-3 py-2">
+                10 MIN
+            </span>
+
+            <p class="small-text mt-2 mb-0">
+                Auto logout protection enabled
+            </p>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- =====================================
+     PROCESS FLOW
+===================================== -->
+
+<div class="card-glass mt-4">
+
+    <h4 class="mb-3">
+
+        <i class="bi bi-diagram-3-fill"></i>
+
+        Secure File Workflow
+
+    </h4>
+
+    <div class="flow">
+
+        <div class="step">
+
+            <div class="step-icon">
+                🔑
+            </div>
+
+            <h6 class="mt-2">
+                Login
+            </h6>
+
+            <small class="small-text">
+                User authentication
+            </small>
+
+        </div>
+
+        <div class="step">
+
+            <div class="step-icon">
+                🛡️
+            </div>
+
+            <h6 class="mt-2">
+                Access Check
+            </h6>
+
+            <small class="small-text">
+                Role verification
+            </small>
+
+        </div>
+
+        <div class="step">
+
+            <div class="step-icon">
+                🔐
+            </div>
+
+            <h6 class="mt-2">
+                Encrypt
+            </h6>
+
+            <small class="small-text">
+                Secure protection
+            </small>
+
+        </div>
+
+        <div class="step">
+
+            <div class="step-icon">
+                📤
+            </div>
+
+            <h6 class="mt-2">
+                Upload
+            </h6>
+
+            <small class="small-text">
+                Store file safely
+            </small>
+
+        </div>
+
+        <div class="step">
+
+            <div class="step-icon">
+                📁
+            </div>
+
+            <h6 class="mt-2">
+                Storage
+            </h6>
+
+            <small class="small-text">
+                Department vault
+            </small>
+
+        </div>
+
+        <div class="step">
+
+            <div class="step-icon">
+                📊
+            </div>
+
+            <h6 class="mt-2">
+                Audit Log
+            </h6>
+
+            <small class="small-text">
+                Activity tracking
+            </small>
+
+        </div>
+
+    </div>
+
+</div>
+<!-- =====================================
+     KPI DASHBOARD
+===================================== -->
+
+<div class="row g-3 mt-4">
+
+    <div class="col-md-3">
+
+        <div class="kpi">
+
+            <div class="kpi-icon">
+                👥
+            </div>
+
+            <h6>Total Users</h6>
+
+            <h3>{{ total_users }}</h3>
+
+            <small class="small-text">
+                Registered Users
+            </small>
+
+        </div>
+
+    </div>
+
+    <div class="col-md-3">
+
+        <div class="kpi">
+
+            <div class="kpi-icon">
+                🛡️
+            </div>
+
+            <h6>Total Admins</h6>
+
+            <h3>{{ total_admins }}</h3>
+
+            <small class="small-text">
+                Security Controllers
+            </small>
+
+        </div>
+
+    </div>
+
+    <div class="col-md-3">
+
+        <div class="kpi">
+
+            <div class="kpi-icon">
+                📁
+            </div>
+
+            <h6>Stored Files</h6>
+
+            <h3>{{ total_files }}</h3>
+
+            <small class="small-text">
+                Encrypted Documents
+            </small>
+
+        </div>
+
+    </div>
+
+    <div class="col-md-3">
+
+        <div class="kpi">
+
+            <div class="kpi-icon">
+                🏢
+            </div>
+
+            <h6>Departments</h6>
+
+            <h3>{{ total_departments }}</h3>
+
+            <small class="small-text">
+                Active Departments
+            </small>
+
+        </div>
+
+    </div>
+</div>
+<div class="row g-3 mt-4">
+
+    <div class="col-md-3">
+
+        <div class="kpi">
+
+            <div class="kpi-icon">
+                ✅
+            </div>
+
+            <h6>Approved Users</h6>
+
+            <h3>{{ approved_count }}</h3>
+
+            <small class="small-text">
+                Active Accounts
+            </small>
+
+        </div>
+
+    </div>
+    <div class="col-md-3">
+
+        <div class="kpi">
+
+            <div class="kpi-icon">
+                ❌
+            </div>
+
+            <h6>Rejected Users</h6>
+
+            <h3>{{ rejected_count }}</h3>
+
+            <small class="small-text">
+                Denied Requests
+            </small>
+
+        </div>
+
+    </div>
+
+<!-- =====================================
+     QUICK ACTION CENTER
+===================================== -->
+    <div class="col-md-3">
+
+        <div class="kpi">
+
+            <div class="kpi-icon">
+                ⏳
+            </div>
+
+            <h6>Pending Users</h6>
+
+            <h3>{{ pending_count }}</h3>
+
+            <small class="small-text">
+                Waiting Users
+            </small>
+
+        </div>
+
+    </div>
+    <div class="col-md-3">
+
+        <div class="kpi">
+
+            <div class="kpi-icon">
+                🚨
+            </div>
+
+            <h6>Failed Logins</h6>
+
+            <h3>{{ today_failed_logins }}</h3>
+
+            <small class="small-text">
+                Security Alerts
+            </small>
+
+        </div>
+
+    </div>
+</div>
+<div class="card-glass mt-4">
+
+    <h4>
+        <i class="bi bi-lightning-charge-fill"></i>
+        Quick Action Center
+    </h4>
+
+    <p class="small-text">
+        Fast access to all security modules
+    </p>
+
+    <div class="row g-3 mt-2">
+
+        <!-- Upload -->
+
+        <div class="col-md-4">
+
+            <a href="/upload"
+               class="btn btn-primary action-btn w-100">
+
+                <i class="bi bi-cloud-arrow-up-fill"></i>
+                Upload File
+
+            </a>
+
+        </div>
+
+        <!-- Files -->
+
+        <div class="col-md-4">
+
+            <a href="/files"
+               class="btn btn-success action-btn w-100">
+
+                <i class="bi bi-folder-fill"></i>
+                View Files
+
+            </a>
+
+        </div>
+
+        <!-- Logs -->
+
+        <div class="col-md-4">
+
+            <a href="/logs"
+               class="btn btn-warning action-btn w-100">
+
+                <i class="bi bi-clipboard-data-fill"></i>
+                Activity Logs
+
+            </a>
+
+        </div>
+        
+    </div>
+
+</div>
+
+<!-- =====================================
+     CONTROL PANEL
+===================================== -->
+
+<div class="card-glass mt-4">
+
+    <h4>
+
+        <i class="bi bi-sliders"></i>
+
+        Security Control Panel
+
+    </h4>
+
+    <p class="small-text">
+
+        Search encrypted files and monitor activities
+
+    </p>
+
+    <div class="row g-4 mt-2">
+
+        <!-- FILE SEARCH -->
+
+        <div class="col-md-6">
+
+            <div class="status-box">
+
+                <div class="status-icon">
+                    📁
+                </div>
+
+                <h5>
+                    Encrypted File Search
+                </h5>
+
+                <p class="small-text">
+
+                    Search stored department files
+
+                </p>
+
+                <form method="GET" action="/files">
+
+                    <input
+                        type="text"
+                        name="search"
+                        class="form-control mb-3"
+                        placeholder="Enter file name">
+
+                    <button
+                        class="btn btn-success w-100">
+
+                        <i class="bi bi-search"></i>
+
+                        Search Files
+
+                    </button>
+
+                </form>
+
+            </div>
+
+        </div>
+
+        <!-- LOG SEARCH -->
+
+        <div class="col-md-6">
+
+            <div class="status-box">
+
+                <div class="status-icon">
+                    📊
+                </div>
+
+                <h5>
+                    Activity Search
+                </h5>
+
+                <p class="small-text">
+
+                    Search audit records instantly
+
+                </p>
+
+                <form method="GET" action="/logs">
+
+                    <input
+                        type="text"
+                        name="search"
+                        class="form-control mb-3"
+                        placeholder="Search activity logs">
+
+                    <button
+                        class="btn btn-primary w-100">
+
+                        <i class="bi bi-search"></i>
+
+                        Search Logs
+
+                    </button>
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- =====================================
+     SECURITY HIGHLIGHTS
+===================================== -->
+
+<div class="row g-3 mt-4">
+
+    <div class="col-md-4">
+
+        <div class="status-box">
+
+            <div class="status-icon">
+                🔐
+            </div>
+
+            <h5>Encrypted Storage</h5>
+
+            <p class="small-text">
+                Files protected before storage
+            </p>
+
+        </div>
+
+    </div>
+
+    <div class="col-md-4">
+
+        <div class="status-box">
+
+            <div class="status-icon">
+                📜
+            </div>
+
+            <h5>Audit Tracking</h5>
+
+            <p class="small-text">
+                Every activity is recorded
+            </p>
+
+        </div>
+
+    </div>
+
+    <div class="col-md-4">
+
+        <div class="status-box">
+
+            <div class="status-icon">
+                🛡️
+            </div>
+
+            <h5>Role Based Access</h5>
+
+            <p class="small-text">
+                Department-level permissions
+            </p>
+
+        </div>
+
+    </div>
+
+</div>
+<!-- PENDING USERS MANAGEMENT -->
+
+<div class="row mt-4">
+
+    <div class="col-md-12">
+
+        <div class="card-glass text-center">
+
+            <h4 class="fw-bold">
+
+                <i class="bi bi-person-clock text-warning"></i>
+
+                Pending User Management
+
+            </h4>
+
+            <p class="small-text">
+
+                Review and approve department registration requests
+
+            </p>
+
+            <a href="/pending_users"
+               class="btn btn-warning btn-lg">
+
+                <i class="bi bi-eye-fill"></i>
+
+                View Pending Users
+
+            </a>
+
+        </div>
+
+    </div>
+
+</div>
+<!-- =====================================
+     SECURITY ANALYTICS
+===================================== -->
+
+<div class="analytics-card mt-4">
+
+    <h4 class="mb-3">
+
+        <i class="bi bi-bar-chart-line-fill"></i>
+
+        Security Analytics Dashboard
+
+    </h4>
+
+    <p class="small-text">
+
+        System activity summary based on audit records
+
+    </p>
+
+    <canvas id="activityChart" height="100"></canvas>
+
+</div>
+
+<div class="card-glass mt-4">
+
+    <h4>
+        <i class="bi bi-file-earmark-bar-graph-fill"></i>
+        Daily Security Report
+    </h4>
+
+    <div class="row g-3 mt-3">
+
+        <div class="col-md-3">
+            <div class="kpi">
+                <div class="kpi-icon">📤</div>
+                <h6>Uploads</h6>
+                <h3>{{ today_uploads }}</h3>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="kpi">
+                <div class="kpi-icon">📥</div>
+                <h6>Downloads</h6>
+                <h3>{{ today_downloads }}</h3>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="kpi">
+                <div class="kpi-icon">🗑️</div>
+                <h6>Deletes</h6>
+                <h3>{{ today_deletes }}</h3>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="kpi">
+                <div class="kpi-icon">🔑</div>
+                <h6>Logins</h6>
+                <h3>{{ today_logins }}</h3>
+            </div>
+        </div>
+
+        
+
+    </div>
+
+</div>
+<!-- =====================================
+     LIVE ACTIVITY FEED
+===================================== -->
+
+<div class="card-glass mt-4">
+
+    <h4 class="mb-3">
+
+        <i class="bi bi-broadcast-pin"></i>
+
+        Live Activity Monitor
+
+    </h4>
+
+    <p class="small-text">
+
+        Latest user activities from audit log database
+
+    </p>
+
+    {% if recent_logs %}
+
+        {% for log in recent_logs %}
+
+        <div class="feed-box">
+
+            <!-- USER -->
+
+            <div class="feed-user">
+
+                <i class="bi bi-person-circle"></i>
+
+                {{ log['username'] }}
+
+            </div>
+
+            <!-- ACTIVITY -->
+
+            <div class="mt-2">
+
+                {% if 'LOGIN' in log['activity'] %}
+
+                    <span class="badge bg-success">
+
+                        <i class="bi bi-box-arrow-in-right"></i>
+
+                        LOGIN
+
+                    </span>
+
+                {% elif 'LOGOUT' in log['activity'] %}
+
+                    <span class="badge bg-danger">
+
+                        <i class="bi bi-box-arrow-left"></i>
+
+                        LOGOUT
+
+                    </span>
+
+                {% elif 'UPLOAD' in log['activity'] %}
+
+                    <span class="badge bg-primary">
+
+                        <i class="bi bi-cloud-arrow-up-fill"></i>
+
+                        FILE UPLOAD
+
+                    </span>
+
+                {% elif 'DOWNLOAD' in log['activity'] %}
+
+                    <span class="badge bg-warning text-dark">
+
+                        <i class="bi bi-cloud-arrow-down-fill"></i>
+
+                        FILE DOWNLOAD
+
+                    </span>
+
+                {% else %}
+
+                    <span class="badge bg-info text-dark">
+
+                        {{ log['activity'] }}
+
+                    </span>
+
+                {% endif %}
+
+            </div>
+
+            <!-- FULL ACTIVITY -->
+
+            <div class="mt-2">
+
+                <i class="bi bi-file-earmark-text"></i>
+
+                {{ log['activity'] }}
+
+            </div>
+
+            <!-- DATE -->
+
+            <div class="feed-time mt-2">
+
+                <i class="bi bi-calendar-event"></i>
+
+                {{ log['log_time'] }}
+
+            </div>
+
+        </div>
+
+        {% endfor %}
+
+    {% else %}
+
+        <div class="alert alert-warning">
+
+            No recent activities found
+
+        </div>
+
+    {% endif %}
+
+</div>
+<!-- LIVE ACTIVITY FEED END -->
+
+</div>
+
+<!-- SECURITY ALERTS -->
+
+<div class="card-glass mt-4">
+
+    <h4>
+        🚨 Security Alerts
+    </h4>
+
+    <p class="small-text">
+        Failed login attempts and security warnings
+    </p>
+
+    {% if recent_alerts %}
+
+        {% for a in recent_alerts %}
+
+        <div class="alert alert-danger">
+
+            <i class="bi bi-exclamation-triangle-fill"></i>
+
+            <b>{{ a['username'] }}</b>
+
+            -
+
+            {{ a['alert_type'] }}
+
+            <br>
+
+            <small>
+                {{ a['alert_time'] }}
+            </small>
+
+        </div>
+
+        {% endfor %}
+
+    {% else %}
+
+        <div class="alert alert-success">
+
+            No security alerts found
+
+        </div>
+
+    {% endif %}
+
+</div>
+
+
+{% if security_alerts %}
+
+<div class="security-box">
+
+    <div class="security-header">
+        <div class="security-icon">🚨</div>
+
+        <div>
+            <h3>Security Monitor</h3>
+            <p>Suspicious Download Activity</p>
+        </div>
+    </div>
+
+    {% for alert in security_alerts %}
+
+    <div class="alert-card">
+
+        <div class="alert-icon">
+            {{ alert.icon }}
+        </div>
+
+        <div class="alert-content">
+
+            <h5>
+                {{ alert.dept_icon }}
+                {{ alert.name }}
+            </h5>
+
+            <p>📧 {{ alert.email }}</p>
+
+            <p>🏢 {{ alert.department }}</p>
+
+            <p>📥 {{ alert.count }} Downloads</p>
+
+            <p>🕒 {{ alert.time }}</p>
+
+        </div>
+
+    </div>
+
+    {% endfor %}
+
+</div>
+
+{% endif %}
+
+<!-- DEPARTMENT OVERVIEW -->
+<!-- =====================================
+     DEPARTMENT SECURITY OVERVIEW
+===================================== -->
+
+<div class="card-glass mt-4">
+
+    <h4 class="mb-3">
+
+        <i class="bi bi-building-fill"></i>
+
+        Department Security Overview
+
+    </h4>
+
+    <p class="small-text">
+
+        User and file distribution across departments
+
+    </p>
+
+    <div class="row g-3">
+
+        {% for d in dept_stats %}
+
+        <div class="col-md-4">
+
+            <div class="dept-card">
+
+                <div class="dept-header">
+
+                    <i class="bi bi-diagram-3-fill"></i>
+
+                    <strong>{{ d.department }}</strong>
+
+                </div>
+
+                <hr>
+
+                <div class="dept-info">
+
+                    <div>
+
+                        <i class="bi bi-people-fill text-primary"></i>
+
+                        Users
+
+                    </div>
+
+                    <span class="badge bg-primary">
+
+                        {{ d.user_count }}
+
+                    </span>
+
+                </div>
+
+                <div class="dept-info mt-2">
+
+                    <div>
+
+                        <i class="bi bi-folder-fill text-success"></i>
+
+                        Files
+
+                    </div>
+
+                    <span class="badge bg-success">
+
+                        {{ d.file_count }}
+
+                    </span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        {% endfor %}
+
+    </div>
+
+</div>
+
+<!-- =====================================
+     SECURITY FEATURES
+===================================== -->
+
+<div class="card-glass mt-4">
+
+    <h4>
+
+        <i class="bi bi-shield-check"></i>
+
+        Active Security Features
+
+    </h4>
+
+    <div class="row g-3 mt-2">
+
+        <div class="col-md-3">
+
+            <div class="feature-box">
+
+                🔐
+
+                <h6 class="mt-2">
+
+                    Encryption
+
+                </h6>
+
+                <small>
+                    Secure file protection
+                </small>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-3">
+
+            <div class="feature-box">
+
+                🚨
+
+                <h6 class="mt-2">
+
+                    3 Login Tries
+
+                </h6>
+
+                <small>
+                    Brute-force prevention
+                </small>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-3">
+
+            <div class="feature-box">
+
+                ⏳
+
+                <h6 class="mt-2">
+
+                    Session Timeout
+
+                </h6>
+
+                <small>
+                    Auto logout security
+                </small>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-3">
+
+            <div class="feature-box">
+
+                📊
+
+                <h6 class="mt-2">
+
+                    Audit Logs
+
+                </h6>
+
+                <small>
+                    Complete tracking
+                </small>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- =====================================
+     LOGOUT
+===================================== -->
+
+<div class="text-center mt-5">
+
+    <a href="/logout"
+       class="btn btn-danger btn-lg px-5">
+
+        <i class="bi bi-box-arrow-right"></i>
+
+        Secure Logout
+
+    </a>
+
+</div>
+<script>
+
+/* Auto Refresh */
+
+setInterval(function(){
+    location.reload();
+},10000);
+
+
+/* Flask Values */
+
+const loginCount = Number("{{ login_count }}");
+const uploadCount = Number("{{ upload_count }}");
+const downloadCount = Number("{{ download_count }}");
+
+
+/* Chart */
+
+const ctx = document.getElementById('activityChart');
+
+new Chart(ctx, {
+
+    type:'bar',
+
+    data:{
+
+        labels:[
+            'Login',
+            'Upload',
+            'Download'
+        ],
+
+        datasets:[{
+
+            label:'Activity Count',
+
+            data:[
+                loginCount,
+                uploadCount,
+                downloadCount
+            ],
+
+            backgroundColor:[
+                '#22c55e',
+                '#2563eb',
+                '#f59e0b'
+            ],
+
+            borderRadius:10
+
+        }]
+
+    }
+
+});
+
+</script>
+<!-- =====================================
+     FOOTER
+===================================== -->
+
+<div class="footer mt-5">
+
+    <h6>
+
+        <i class="bi bi-shield-lock-fill"></i>
+
+        Intelligent Secure File Vault
+
+    </h6>
+
+    <p class="mb-1">
+
+        Enterprise File Security & Audit Monitoring System
+
+    </p>
+
+    <small>
+
+        Encryption • Role Based Access • Activity Tracking • Secure Storage
+
+    </small>
+
+</div>
+</body>
+</html>

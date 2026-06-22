@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Secure Upload</title>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<!-- Icons -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+
+<style>
+
+body{
+    margin:0;
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-family:'Segoe UI';
+    background: radial-gradient(circle at top,#1e3a8a,#0f172a 60%,#020617);
+    color:white;
+}
+
+/* GLASS CARD */
+.glass-card{
+    width:100%;
+    max-width:520px;
+    background:rgba(255,255,255,0.08);
+    border:1px solid rgba(255,255,255,0.15);
+    border-radius:20px;
+    backdrop-filter: blur(15px);
+    box-shadow:0 10px 40px rgba(0,0,0,0.5);
+    overflow:hidden;
+}
+
+/* HEADER */
+.header{
+    padding:25px;
+    text-align:center;
+    background: linear-gradient(135deg,#2563eb,#7c3aed);
+}
+
+.header h2{
+    margin:0;
+    font-weight:bold;
+}
+
+/* BODY */
+.body{
+    padding:25px;
+}
+
+/* INFO BOX */
+.info{
+    background:rgba(255,255,255,0.08);
+    padding:12px;
+    border-radius:12px;
+    margin-bottom:12px;
+    border:1px solid rgba(255,255,255,0.1);
+}
+
+label{
+    font-size:13px;
+    opacity:0.8;
+}
+
+/* FILE INPUT */
+input[type="file"]{
+    background:white;
+    border-radius:10px;
+    padding:10px;
+}
+
+/* BUTTON */
+.btn-mass{
+    background:linear-gradient(135deg,#22c55e,#16a34a);
+    border:none;
+    font-weight:bold;
+    padding:12px;
+    border-radius:12px;
+    transition:0.3s;
+}
+
+.btn-mass:hover{
+    transform:scale(1.03);
+    box-shadow:0 0 20px rgba(34,197,94,0.4);
+}
+
+/* BACK BUTTON */
+.btn-back{
+    background:transparent;
+    border:1px solid rgba(255,255,255,0.3);
+    color:white;
+    border-radius:12px;
+}
+
+.btn-back:hover{
+    background:rgba(255,255,255,0.1);
+}
+
+/* ICON */
+.icon{
+    font-size:40px;
+    margin-bottom:10px;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="glass-card">
+
+    <!-- HEADER -->
+    <div class="header">
+        <div class="icon">🔐📤</div>
+        <h2>Secure File Upload</h2>
+        <p class="mb-0">Encrypted • Department Controlled • Logged System</p>
+    </div>
+
+    <!-- BODY -->
+    <div class="body">
+
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        <div class="alert alert-success text-center">
+            {{ messages[0] }}
+        </div>
+        {% endif %}
+        {% endwith %}
+
+        <div class="info">
+            <label>User</label>
+            <input class="form-control" value="{{ username }}" readonly>
+        </div>
+
+        <div class="info">
+            <label>email</label>
+            <input class="form-control" value="{{ email }}" readonly>
+        </div>
+
+        <div class="info">
+            <label>Department</label>
+            <input class="form-control"
+                   value="{% if email == 'admin123@gmail.com' %}COMMON{% else %}{{ department }}{% endif %}"
+                   readonly>
+        </div>
+
+        <form method="POST" enctype="multipart/form-data">
+
+            <div class="mb-3">
+                <input type="file" name="file" class="form-control" required>
+            </div>
+
+            <button class="btn btn-mass w-100">
+                🚀 Upload & Encrypt File
+            </button>
+
+        </form>
+
+        <a href="/dashboard" class="btn btn-back w-100 mt-3">
+            ⬅ Back to Dashboard
+        </a>
+
+    </div>
+
+</div>
+
+</body>
+</html>

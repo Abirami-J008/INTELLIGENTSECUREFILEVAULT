@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Secure Vault User Dashboard</title>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<!-- ICONS -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+
+<style>
+
+body{
+    background: radial-gradient(circle at top,#0f172a,#020617);
+    color:white;
+    font-family:"Segoe UI";
+}
+
+/* HERO */
+.hero{
+    background: linear-gradient(135deg,#2563eb,#7c3aed);
+    padding:25px;
+    border-radius:20px;
+    box-shadow:0 10px 40px rgba(0,0,0,0.5);
+}
+.profile-btn{
+    background:linear-gradient(
+        135deg,
+        #0f172a,
+        #1e3a8a
+    );
+    
+    color:white;
+    
+    border:none;
+    
+    border-radius:12px;
+    
+    font-weight:700;
+    
+    padding:10px 18px;
+    
+    transition:.3s;
+    
+    box-shadow:
+    0 0 15px rgba(59,130,246,.35);
+}
+
+.profile-btn:hover{
+
+    color:white;
+
+    transform:translateY(-2px);
+
+    background:linear-gradient(
+        135deg,
+        #1e40af,
+        #2563eb
+    );
+
+    box-shadow:
+    0 0 25px rgba(59,130,246,.6);
+}
+
+.profile-btn i{
+
+    margin-right:6px;
+
+    font-size:16px;
+}
+
+/* GLASS */
+.glass{
+    background: rgba(255,255,255,0.06);
+    border:1px solid rgba(255,255,255,0.12);
+    border-radius:18px;
+    backdrop-filter: blur(12px);
+    transition:0.3s;
+}
+
+.glass:hover{
+    transform: translateY(-6px);
+    background: rgba(255,255,255,0.10);
+}
+
+/* ICON */
+.icon{
+    font-size:32px;
+    margin-bottom:8px;
+}
+
+/* BUTTON */
+.btn{
+    border-radius:12px;
+    font-weight:600;
+}
+
+/* INPUT */
+.form-control{
+    background: rgba(255,255,255,0.08);
+    border:1px solid rgba(255,255,255,0.15);
+    color:white;
+}
+
+.form-control::placeholder{
+    color:#cbd5e1;
+}
+
+/* STATUS BADGE */
+.badge-live{
+    background: #22c55e;
+    padding:6px 12px;
+    border-radius:20px;
+}
+
+/* SECURITY BAR */
+.security-bar{
+    background: linear-gradient(90deg,#22c55e,#3b82f6,#a855f7);
+    height:6px;
+    border-radius:10px;
+}
+
+.footer{
+    text-align:center;
+    color:#94a3b8;
+    margin-top:20px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container py-4">
+
+<!-- HERO -->
+<div class="hero text-center">
+
+    <h2>🔐User Secure Vault System</h2>
+
+    <h5>Welcome : <b>{{ username }}</b></h5>
+    <p>Department : <b>{{ department }}</b></p>
+    <div class="mt-3">
+
+    <a href="/profile" class="profile-btn me-2">
+    <i class="bi bi-person-badge-fill"></i>
+        Profile
+    </a>
+    
+    </div>
+    <span class="badge-live">
+        <i class="fa fa-shield-alt"></i> Encrypted Storage Active
+    </span>
+
+</div>
+
+<!-- SECURITY STATUS -->
+<div class="mt-3">
+    <div class="security-bar"></div>
+</div>
+
+<!-- KPI -->
+<div class="row g-3 mt-4">
+
+    <div class="col-md-4">
+        <div class="glass p-4 text-center">
+            <div class="icon"><i class="fa fa-users"></i></div>
+            <h6>Department Users</h6>
+            <h3>{{ dept_user_count }}</h3>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="glass p-4 text-center">
+            <div class="icon"><i class="fa fa-lock"></i></div>
+            <h6>Encrypted Files</h6>
+            <h3>{{ dept_file_count }}</h3>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="glass p-4 text-center">
+            <div class="icon"><i class="fa fa-shield-halved"></i></div>
+            <h6>Security Status</h6>
+            <h3 class="text-success">ACTIVE</h3>
+        </div>
+    </div>
+
+</div>
+
+<!-- ACTIONS -->
+<div class="row g-4 mt-4">
+
+    <!-- UPLOAD -->
+    <div class="col-md-4">
+        <div class="glass p-4 text-center">
+            <div class="icon"><i class="fa fa-upload"></i></div>
+            <h5>Encrypted Upload</h5>
+            <p style="font-size:13px;opacity:0.8;">
+                File will be encrypted using Fernet before storing
+            </p>
+            <a href="/upload" class="btn btn-primary w-100">
+                Upload Secure File
+            </a>
+        </div>
+    </div>
+
+    <!-- FILES -->
+    <div class="col-md-4">
+        <div class="glass p-4 text-center">
+            <div class="icon"><i class="fa fa-folder-open"></i></div>
+            <h5>Access Files</h5>
+            <p style="font-size:13px;opacity:0.8;">
+                Department + Common encrypted storage
+            </p>
+            <a href="/files" class="btn btn-success w-100">
+                View Files
+            </a>
+        </div>
+    </div>
+
+    <!-- LOGS -->
+    <div class="col-md-4">
+        <div class="glass p-4 text-center">
+            <div class="icon"><i class="fa fa-chart-line"></i></div>
+            <h5>Activity Logs</h5>
+            <p style="font-size:13px;opacity:0.8;">
+                Track uploads, downloads, login events
+            </p>
+            <a href="/logs" class="btn btn-warning w-100">
+                View Logs
+            </a>
+        </div>
+    </div>
+
+</div>
+
+<!-- SECURITY INFO PANEL -->
+<div class="glass mt-4 p-4">
+
+    <h5>🛡️ Security Features Active</h5>
+
+    <ul style="opacity:0.9;">
+        <li>🔐 AES Encryption (Fernet) for all uploads</li>
+        <li>⏳ Auto session timeout (activity tracking)</li>
+        <li>🚫 3 failed login attempt lock system</li>
+        <li>📊 Full audit logs (upload/download/login)</li>
+        <li>🏢 Department-based access control</li>
+    </ul>
+
+</div>
+
+<!-- CONTROL -->
+<div class="glass mt-4 p-4">
+
+    <h5>⚙️ Quick Search</h5>
+
+    <form method="GET" action="/files">
+
+        <div class="row g-2">
+
+            <div class="col-md-10">
+                <input type="text" name="search"
+                       class="form-control"
+                       placeholder="Search encrypted files...">
+            </div>
+
+            <div class="col-md-2">
+                <button class="btn btn-success w-100">
+                    Search
+                </button>
+            </div>
+
+        </div>
+
+    </form>
+
+</div>
+
+<!-- LOGOUT -->
+<div class="text-center mt-4">
+    <a href="/logout" class="btn btn-danger btn-lg px-5">
+        <i class="fa fa-power-off"></i> Logout
+    </a>
+</div>
+
+<div class="footer mt-3">
+    🔐 Secure Vault • Encrypted File System • Professional Edition
+</div>
+
+</div>
+
+</body>
+</html>
