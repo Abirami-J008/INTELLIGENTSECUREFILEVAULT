@@ -122,21 +122,71 @@ Password:
 Admin@123
 After the first login, it is recommended to change the password for security purposes.
 
-## Project Structure
+# Project Structure
+
+```text
 IntelligentSecureFileVault/
 
 ├── app.py
-│   └── Flask application, routes, authentication, and database operations
+│   └── Flask application, routes, authentication, database operations, file management, encryption, and security logic
 │
 ├── templates/
-│   └── HTML pages for Admin and User dashboards
+│   ├── home.html
+│   │   └── Home page
+│   │
+│   ├── login.html
+│   │   └── User login page
+│   │
+│   ├── register.html
+│   │   └── New user registration page
+│   │
+│   ├── pending_users.html
+│   │   └── Admin page for managing pending user approvals
+│   │
+│   ├── admin_dashboard.html
+│   │   └── Administrator dashboard with statistics and security monitoring
+│   │
+│   ├── user_dashboard.html
+│   │   └── User dashboard with department-based file access
+│   │
+│   ├── files.html
+│   │   └── File management and file listing page
+│   │
+│   ├── upload.html
+│   │   └── Secure file upload page
+│   │
+│   ├── logs.html
+│   │   └── Activity log monitoring and filtering page
+|   ├──pending_users.html  
+    |   └── User approval and registration management page
+│   │
+│   └── profile.html
+│       └── User profile a  password change page
 │
-
 ├── uploads/
-│   └── Uploaded file storage location
+│   ├── Civil/
+│   │   └── Department-wise uploaded files
+│   │
+│   ├── CSE/
+│   │   └── Department-wise uploaded files
+│   │
+│   ├── ECE/
+│   │   └── Department-wise uploaded files
+│   │
+│   ├── EEE/
+│   │   └── Department-wise uploaded files
+│   │
+│   ├── MECH/
+│   │   └── Department-wise uploaded files
+│   │
+│   └── Common/
+│       └── Common files uploaded by administrator
 │
-└── vault.db
-    └── SQLite database (Local use only)
+├── vault.db
+│   └── SQLite database storing users, files, activity logs, and security alerts
+│
+└── secret.key
+    └── Encryption key used for securing uploaded files
 ## Technologies Used
 
 ### Python
