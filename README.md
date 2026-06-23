@@ -179,6 +179,13 @@ Security alert monitoring
 Audit trail logging
 Secure file operations
 Session management
+## License
+
+Copyright (c) 2026 ABIRAMI J
+
+All Rights Reserved.
+
+No part of this project may be copied, modified, distributed, or reused without prior written permission from the author.
 ###About
 ###Intelligent Secure File Vault System is a secure document management platform developed using Python Flask. The system focuses on protecting institutional documents by implementing cybersecurity concepts such as authentication, authorization, encryption, access control, audit logging, and security monitoring.
 ###The application provides a secure environment for educational institutions to manage departmental files efficiently while maintaining confidentiality, integrity, and accountability.
